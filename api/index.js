@@ -43,7 +43,7 @@ app.use(cors(options));
 //el callback siempre tiene doclears parámetros "req" y "res".
 app.get ("/api", (req, res) => {
   //Respuesta al cliente
-  res.send("hola mi server en express");
+  res.send("hola mi server en express, by: Eduardo CR del curso Curso de Backend con Node.js: API REST con Express.js");
 });
 app.get('/api/nueva-ruta', (req, res) => {
   // Respuesta al cliente
