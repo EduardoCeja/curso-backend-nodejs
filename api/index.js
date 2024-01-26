@@ -9,7 +9,7 @@ const routerApi = require('./routes'); // Controlador de rutas
 // Importar middleware
 const { logErrors, errorHandler,boomErrorHandler } = require('./middlewares/errorsHeandlers'); //importar las funciones que se uilizarán
 const app = express(); // Crear instancia de aplicacion de express
-const port = 3000; // Puerto en el que se ejecutara el servidor
+const port = process.env.PORT || 3000; // Puerto en el que se ejecutara el servidor
 // Enrutador de la aplicacion
 /*
  * req : parametro que contiene toda lo necesario de la petición desde el cliente
@@ -22,7 +22,7 @@ const port = 3000; // Puerto en el que se ejecutara el servidor
 app.use(express.json());
 
 // Lista de origenes permitidos
-const whitelist = ['http://172.24.70.134:5500', 'https://myapp.co'];
+const whitelist = ['http://localhost:8080', 'https://myapp.co'];
 // Configuracion de cors
 const options = {
   origin: (origin, callback) => {
@@ -41,11 +41,11 @@ app.use(cors(options));
 //definimos la ruta
 // tiene un callback que va a ejecutar la respuesta que enviemos al cliente.
 //el callback siempre tiene doclears parámetros "req" y "res".
-app.get ("/", (req, res) => {
+app.get ("/api", (req, res) => {
   //Respuesta al cliente
   res.send("hola mi server en express");
 });
-app.get('/nueva-ruta', (req, res) => {
+app.get('/api/nueva-ruta', (req, res) => {
   // Respuesta al cliente
   res.send('Hola , soy una nueva ruta');
 });
